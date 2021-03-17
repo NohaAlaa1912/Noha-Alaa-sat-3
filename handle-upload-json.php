@@ -38,19 +38,27 @@ if(empty($error)){
     
     $_SESSION['success'];
     header("location:display.php");
+
+
+    $testFile2= fopen("programming.json", "r");
+ $testFile2Size =filesize("programming.json");
+ $testFile2Data= fread($testFile2, $testFile2Size);
+ 
        
 $fileRead=file_get_contents("programming.json");
 $assocContent=json_decode($fileRead,true);
 echo "<pre>";
-
+echo $testFile2Data;
 foreach($assocContent['programmingLanguage'] as $language){
 
     echo  " $language[name] <br>";
-
+    fclose($testFile2);
 }
 // print_r($assocContent);
  $_SESSION['assocContent']=$assocContent;
 
+
+ 
 
 }
 else
